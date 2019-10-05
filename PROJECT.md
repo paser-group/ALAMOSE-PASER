@@ -14,7 +14,7 @@
 
 ## Project Update#2
 
-> Construct prediction models to predict security bugs in scientific software? 
+> Construct prediction models to predict security bugs in scientific software
 
 - Type-based model: REPO_TYPE
 - Size-based model: ADD_LOC, DEL_LOC, TOT_LOC
@@ -25,3 +25,12 @@
   - Apply Naïve Bayes, kNN, Decision Tree, ANN, and Random Forest
 - Apply 10 by 10 fold cross validation , and then report prediction accuracy using precision, recall, and F-measure. 
 
+## Project Update#3
+
+> Apply transfer learning to transfer model from one type of scientfic software projects to another
+
+- Construct model for all data available for `ComputationalBiology` 
+- Apply transfer learning to buidl a model for `Astronomy` 
+- Calculate precision, recall, and F-Measure for the transferred model 
+- Apply security static analysis tool on your whole code base to idnetify insecure coding patterns. Report which insecure 
+  coding patterns are easy to fix, and which ones are hard, base don your judgement.  

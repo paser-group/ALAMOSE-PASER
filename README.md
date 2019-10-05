@@ -4,8 +4,8 @@
 
 > Akond Rahman, PhD 
 > arahman@tntech.edu 
-> Bruner Hall, Room#417
-> Office hours: 9:30 AM – 10:30 AM , Tuesday and Thursday , or by appointment 
+> Foundation Hall, Room#215
+> Office hours: 9:30 AM – 10:30 AM , Tuesday and Thursday 
 
 
 ## Materials 
@@ -96,4 +96,3 @@
 - Mismatch between reported output and source code results will be inspected. The instructor will download repos, install libraries, and run the code based on the instruction provided in the mentioned Markdown file. Reported output and source code results will be checked during project update#1, project update#2, and final project submission. For reproducibility teams are allowed to use Docker containers.   
 - Every regrade request in due time will be accepted, but all submissions will be re-checked and may result in reduced points. 
 - One project report and one project presentation for each group  
-- Use the 'Issues' Feature on GitLab to post questions on the course page: https://gitlab.csc.tntech.edu/arahman/csc4220-coursecontent
