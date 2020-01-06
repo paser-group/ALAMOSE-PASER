@@ -25,7 +25,7 @@ def giveTimeStamp():
 
 def getEligibleProjects(fileNameParam):
   repo_list = []
-  with open(fileNameParam, 'rU') as f:
+  with open(fileNameParam, 'r') as f:
     reader = csv.reader(f)
     for row in reader:
       repo_list.append(row[0])
@@ -90,7 +90,7 @@ def dumpContentIntoFile(strP, fileP):
 
 def getFileContent(file_name):
   full_data = ''
-  f = open(file_name, 'rU')
+  f = open(file_name, 'r', encoding='latin-1')
   full_data = f.read()
   return full_data 
 
@@ -103,17 +103,34 @@ def getSecuFileMapping(full_df, repo_type):
     file_df = full_df[full_df['FILE_MAP']==file_] 
     file_flags = file_df['SECU_FLAG'].tolist() 
     file_size  = file_df['FILE_SIZE'].tolist()[0]
-    if 'INSECURE' in file_flags:
+    # print(file_flags) 
+    # print('='*25)
+    file_ext   = file_.split('.')[-1].upper() 
+    unique_flags = np.unique(file_flags)
+    if (len(unique_flags) ==1 ) and (unique_flags[0]=='NEUTRAL'):
+      file_secu = 'NEUTRAL'     
+    else:
       file_secu = 'INSECURE' 
-      secu_file.append( (file_ , file_size , file_secu) )
+    tu = (file_ , file_size , file_ext, file_secu) 
+    print(tu)
+    secu_file.append( tu )
   secu_df = pd.DataFrame(secu_file)
-  secu_df.to_csv(repo_type + '_SECU_FILE_MAP.csv', header=[ 'FILE_MAP', 'FILE_SIZE' , 'SECU_FLAG' ], index=False, encoding='utf-8')   
+  secu_df.to_csv(repo_type + '_SECU_FILE_MAP.csv', header=[ 'FILE_MAP', 'FILE_SIZE' , 'FILE_EXT', 'SECU_FLAG' ], index=False, encoding='utf-8')   
 
     
+
+def getSummary(df_param): 
+  repo_names = np.unique(df_param['REPO'].tolist()) 
+  for repo_ in repo_names:
+    print('*'*100 )
+    print('REPO:{}, HASHES:{}'.format(repo_, len(np.unique( df_param[ df_param['REPO']==repo_]['HASH'].tolist()   )) ))
+    print('*'*100 )
+
  
 def buildContent(df_, HOST_DIR, repo_type, out_dir):
     content = [] 
     repo_df  = df_[df_['REPO_TYPE']==repo_type]
+    getSummary(repo_df) 
     all_repo_cnt = len( np.unique(repo_df['REPO'].tolist()) )  
     print('TOTAL REPOS ARE {} FOR {}'.format(  all_repo_cnt, repo_type) ) 
     all_hash = np.unique( repo_df['HASH'].tolist() ) 
@@ -132,19 +149,22 @@ def buildContent(df_, HOST_DIR, repo_type, out_dir):
           # print('<>'*25)
           for fil_ in filtered_files: 
             file_path     = HOST_DIR + repo_name + fil_ 
-            
-            if(os.path.exists(file_path)):
-              num_lines     = sum(1 for line in open( file_path ))
-              map_name      = file_path.replace('/', '_')
-              tuple_        = (repo_name, repo_path, repo_type, hash_, file_path, num_lines , map_name, secu_flag)  
-              # print(tuple_) 
-              content.append( tuple_ )
-              if map_name not in already_seen:
-                out_file_name = out_dir + map_name 
-                out_file_content = getFileContent(file_path) 
-                dumpContentIntoFile(out_file_content, out_file_name)
-                already_seen.append(map_name) 
-                print('Dumped', file_path) 
+            try:
+              if(os.path.exists(file_path)) and (os.path.isdir(file_path) == False):  
+                num_lines     = sum(1 for line in open( file_path , 'r',  encoding='latin-1' ))
+                map_name      = file_path.replace('/', '_')
+                tuple_        = (repo_name, repo_path, repo_type, hash_, file_path, num_lines , map_name, secu_flag)  
+                # print(tuple_) 
+                content.append( tuple_ )
+                if map_name not in already_seen:
+                  out_file_name = out_dir + map_name 
+                  out_file_content = getFileContent(file_path) 
+                  dumpContentIntoFile(out_file_content, out_file_name)
+                  already_seen.append(map_name) 
+                  print('Dumped', file_path) 
+            except ValueError as e_:
+              print(e_) 
+              print(hash_) 
     mapping_df = pd.DataFrame(content) 
     mapping_df.to_csv(repo_type + '.csv', header=['REPO_NAME', 'REPO_PATH', 'REPO_TYPE', 'HASH', 'FILE_PATH', 'FILE_SIZE',  'FILE_MAP', 'SECU_FLAG' ], index=False, encoding='utf-8')   
     df = pd.read_csv(repo_type + '.csv') 
@@ -159,9 +179,15 @@ if __name__=='__main__':
     CURATED_FILE = '/Users/arahman/Documents/OneDriveWingUp/OneDrive-TennesseeTechUniversity/Teaching/Spring2020/CSC6220-TNTECH/CURATED_SECURITY_FULL.csv' 
     HOST_DIR='/Users/arahman/TEACHING_REPOS/NON_JULIA_SCIENTIFIC_SOFTWARE/'
     OUTPUT_DIR = '/Users/arahman/Documents/OneDriveWingUp/OneDrive-TennesseeTechUniversity/Teaching/Spring2020/CSC6220_DATASET/'
-
     CURATED_DF   = pd.read_csv(CURATED_FILE) 
-    TYPE2ANALYZE = 'ComputationalBiology'
+
+    # TYPE2ANALYZE = 'ComputationalBiology'
+    # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
+
+    # TYPE2ANALYZE = 'Astronomy'
+    # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
+
+    TYPE2ANALYZE = 'ComputationalChemistry'
     buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
 
     print('*'*100 )
@@ -172,3 +198,7 @@ if __name__=='__main__':
     print('Duration: {} minutes'.format(time_diff) )
     print( '*'*100  )
 
+    '''
+    not used 
+    getSecuFileMapping( pd.read_csv( TYPE2ANALYZE + '.csv') , TYPE2ANALYZE )
+    '''
