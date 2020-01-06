@@ -102,11 +102,12 @@ def getSecuFileMapping(full_df, repo_type):
   for file_ in all_files: 
     file_df = full_df[full_df['FILE_MAP']==file_] 
     file_flags = file_df['SECU_FLAG'].tolist() 
+    file_size  = file_df['FILE_SIZE'].tolist()[0]
     if 'INSECURE' in file_flags:
       file_secu = 'INSECURE' 
-      secu_file.append( (file_ , file_secu) )
+      secu_file.append( (file_ , file_size , file_secu) )
   secu_df = pd.DataFrame(secu_file)
-  secu_df.to_csv(repo_type + '_SECU_FILE_MAP.csv', header=[ 'FILE_MAP', 'SECU_FLAG' ], index=False, encoding='utf-8')   
+  secu_df.to_csv(repo_type + '_SECU_FILE_MAP.csv', header=[ 'FILE_MAP', 'FILE_SIZE' , 'SECU_FLAG' ], index=False, encoding='utf-8')   
 
     
  
@@ -125,15 +126,17 @@ def buildContent(df_, HOST_DIR, repo_type, out_dir):
         diff_txt, file_list  = getDiff(repo_path, hash_) 
         repo_type = hash_df['REPO_TYPE'].tolist()[0] 
         tot_loc   = hash_df['TOT_LOC'].tolist()[0] 
-        if len(tot_loc > 0):
+        if tot_loc > 0:
           filtered_files = filterFiles(file_list) 
           # print(repo_path, filtered_files) 
           # print('<>'*25)
           for fil_ in filtered_files: 
             file_path     = HOST_DIR + repo_name + fil_ 
+            
             if(os.path.exists(file_path)):
+              num_lines     = sum(1 for line in open( file_path ))
               map_name      = file_path.replace('/', '_')
-              tuple_        = (repo_name, repo_path, repo_type, hash_, file_path, map_name, secu_flag)  
+              tuple_        = (repo_name, repo_path, repo_type, hash_, file_path, num_lines , map_name, secu_flag)  
               # print(tuple_) 
               content.append( tuple_ )
               if map_name not in already_seen:
@@ -141,12 +144,11 @@ def buildContent(df_, HOST_DIR, repo_type, out_dir):
                 out_file_content = getFileContent(file_path) 
                 dumpContentIntoFile(out_file_content, out_file_name)
                 already_seen.append(map_name) 
+                print('Dumped', file_path) 
     mapping_df = pd.DataFrame(content) 
-    mapping_df.to_csv(repo_type + '.csv', header=['REPO_NAME', 'REPO_PATH', 'REPO_TYPE', 'HASH', 'FILE_PATH', 'FILE_MAP', 'SECU_FLAG' ], index=False, encoding='utf-8')   
+    mapping_df.to_csv(repo_type + '.csv', header=['REPO_NAME', 'REPO_PATH', 'REPO_TYPE', 'HASH', 'FILE_PATH', 'FILE_SIZE',  'FILE_MAP', 'SECU_FLAG' ], index=False, encoding='utf-8')   
     df = pd.read_csv(repo_type + '.csv') 
     getSecuFileMapping( df , repo_type )
-
-
 
 if __name__=='__main__': 
 
