@@ -80,12 +80,43 @@ def filterFiles(ls_):
                                   mod_list.append( elem  ) 
   return mod_list 
 
-def buildContent(df_, HOST_DIR, repo_type):
+
+def dumpContentIntoFile(strP, fileP):
+    fileToWrite = open( fileP, 'w')
+    fileToWrite.write(strP)
+    fileToWrite.close()
+    return str(os.stat(fileP).st_size)
+
+
+def getFileContent(file_name):
+  full_data = ''
+  f = open(file_name, 'rU')
+  full_data = f.read()
+  return full_data 
+
+
+def getSecuFileMapping(full_df, repo_type): 
+  secu_file = []
+  all_files = np.unique(full_df['FILE_MAP'].tolist()) 
+  file_secu = 'NEUTRAL'
+  for file_ in all_files: 
+    file_df = full_df[full_df['FILE_MAP']==file_] 
+    file_flags = file_df['SECU_FLAG'].tolist() 
+    if 'INSECURE' in file_flags:
+      file_secu = 'INSECURE' 
+      secu_file.append( (file_ , file_secu) )
+  secu_df = pd.DataFrame(secu_file)
+  secu_df.to_csv(repo_type + '_SECU_FILE_MAP.csv', header=[ 'FILE_MAP', 'SECU_FLAG' ], index=False, encoding='utf-8')   
+
+    
+ 
+def buildContent(df_, HOST_DIR, repo_type, out_dir):
     content = [] 
     repo_df  = df_[df_['REPO_TYPE']==repo_type]
     all_repo_cnt = len( np.unique(repo_df['REPO'].tolist()) )  
     print('TOTAL REPOS ARE {} FOR {}'.format(  all_repo_cnt, repo_type) ) 
     all_hash = np.unique( repo_df['HASH'].tolist() ) 
+    already_seen = []
     for hash_ in all_hash: 
         hash_df = df_[df_['HASH']==hash_]
         repo_name = hash_df['REPO'].tolist()[0]
@@ -93,16 +124,27 @@ def buildContent(df_, HOST_DIR, repo_type):
         repo_path = HOST_DIR + repo_name + '/'
         diff_txt, file_list  = getDiff(repo_path, hash_) 
         repo_type = hash_df['REPO_TYPE'].tolist()[0] 
-        filtered_files = filterFiles(file_list) 
-        # print(repo_path, filtered_files) 
-        # print('<>'*25)
-        for fil_ in filtered_files: 
-          file_path     = HOST_DIR + repo_name + fil_ 
-          if(os.path.exists(file_path)):
-            map_name      = file_path.replace('/', '_')
-            tuple_        = (repo_name, repo_path, repo_type, hash_, file_path, map_name, secu_flag)  
-            print(tuple_) 
-            content.append( tuple_ )
+        tot_loc   = hash_df['TOT_LOC'].tolist()[0] 
+        if len(tot_loc > 0):
+          filtered_files = filterFiles(file_list) 
+          # print(repo_path, filtered_files) 
+          # print('<>'*25)
+          for fil_ in filtered_files: 
+            file_path     = HOST_DIR + repo_name + fil_ 
+            if(os.path.exists(file_path)):
+              map_name      = file_path.replace('/', '_')
+              tuple_        = (repo_name, repo_path, repo_type, hash_, file_path, map_name, secu_flag)  
+              # print(tuple_) 
+              content.append( tuple_ )
+              if map_name not in already_seen:
+                out_file_name = out_dir + map_name 
+                out_file_content = getFileContent(file_path) 
+                dumpContentIntoFile(out_file_content, out_file_name)
+                already_seen.append(map_name) 
+    mapping_df = pd.DataFrame(content) 
+    mapping_df.to_csv(repo_type + '.csv', header=['REPO_NAME', 'REPO_PATH', 'REPO_TYPE', 'HASH', 'FILE_PATH', 'FILE_MAP', 'SECU_FLAG' ], index=False, encoding='utf-8')   
+    df = pd.read_csv(repo_type + '.csv') 
+    getSecuFileMapping( df , repo_type )
 
 
 
@@ -114,10 +156,11 @@ if __name__=='__main__':
 
     CURATED_FILE = '/Users/arahman/Documents/OneDriveWingUp/OneDrive-TennesseeTechUniversity/Teaching/Spring2020/CSC6220-TNTECH/CURATED_SECURITY_FULL.csv' 
     HOST_DIR='/Users/arahman/TEACHING_REPOS/NON_JULIA_SCIENTIFIC_SOFTWARE/'
+    OUTPUT_DIR = '/Users/arahman/Documents/OneDriveWingUp/OneDrive-TennesseeTechUniversity/Teaching/Spring2020/CSC6220_DATASET/'
 
     CURATED_DF   = pd.read_csv(CURATED_FILE) 
     TYPE2ANALYZE = 'ComputationalBiology'
-    buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE) 
+    buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
 
     print('*'*100 )
     print('Ended at:', giveTimeStamp() )
