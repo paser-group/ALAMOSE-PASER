@@ -185,15 +185,15 @@ if __name__=='__main__':
     OUTPUT_DIR = '/Users/arahman/Documents/OneDriveWingUp/OneDrive-TennesseeTechUniversity/Teaching/Spring2020/CSC6220_DATASET/'
     CURATED_DF   = pd.read_csv(CURATED_FILE) 
 
-    # TYPE2ANALYZE = 'ComputationalBiology'
+    TYPE2ANALYZE = 'ComputationalBiology'
     # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
 
     # TYPE2ANALYZE = 'Astronomy'
     # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
 
-    TYPE2ANALYZE = 'ComputationalChemistry'
-    buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
-
+    # TYPE2ANALYZE = 'ComputationalChemistry'
+    # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
+    getSecuFileMapping( pd.read_csv( TYPE2ANALYZE + '.csv') , TYPE2ANALYZE )
 
     print('*'*100 )
     print('Ended at:', giveTimeStamp() )
