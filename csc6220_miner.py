@@ -111,9 +111,10 @@ def getSecuFileMapping(full_df, repo_type):
       file_secu = 'NEUTRAL'     
     else:
       file_secu = 'INSECURE' 
-    tu = (file_ , file_size , file_ext, file_secu) 
-    print(tu)
-    secu_file.append( tu )
+    if ((file_ext=='C') or (file_ext=='CC') or (file_ext=='CPP') or (file_ext=='GLSL') or (file_ext=='GO') or (file_ext=='H') or (file_ext=='HH') or (file_ext=='HPP') or (file_ext=='JAVA') or (file_ext=='JL') or (file_ext=='JS') or (file_ext=='LUA') or (file_ext=='PL') or (file_ext=='PM') or (file_ext=='PY') or (file_ext=='R') or (file_ext=='RB') or (file_ext=='SH') ):
+      tu = (file_ , file_size , file_ext, file_secu) 
+      # print(tu)
+      secu_file.append( tu )
   secu_df = pd.DataFrame(secu_file)
   secu_df.to_csv(repo_type + '_SECU_FILE_MAP.csv', header=[ 'FILE_MAP', 'FILE_SIZE' , 'FILE_EXT', 'SECU_FLAG' ], index=False, encoding='utf-8')   
 
@@ -187,8 +188,10 @@ if __name__=='__main__':
     # TYPE2ANALYZE = 'Astronomy'
     # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
 
-    TYPE2ANALYZE = 'ComputationalChemistry'
-    buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
+
+    # TYPE2ANALYZE = 'ComputationalChemistry'
+    # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
+
 
     print('*'*100 )
     print('Ended at:', giveTimeStamp() )
