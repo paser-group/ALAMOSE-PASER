@@ -60,6 +60,7 @@ def getModFiles(repo_, hash_):
 
 def getFileLabels(df_param, root_path, out_file):
     file_dict = {}
+    repo_dict = {}
     hash_ls   = np.unique( df_param['HASH'].tolist()  )
     for hash_ in hash_ls:
         hash_df   = df_param[df_param['HASH']==hash_]
@@ -69,6 +70,8 @@ def getFileLabels(df_param, root_path, out_file):
         mod_files = getModFiles(repo_path, hash_) 
         for mod_file in mod_files: 
             mod_file_path = repo_path + mod_file 
+            if mod_file_path not in repo_dict:
+                repo_dict[mod_file_path] = repo_path        
             if mod_file_path not in file_dict:
                 file_dict[mod_file_path] = [hash_flag] 
             else: 
@@ -79,6 +82,7 @@ def getFileLabels(df_param, root_path, out_file):
             file_content = '' 
             if(os.path.exists(k_)) and (os.path.isdir(k_) == False):  
                 num_lines     = sum(1 for line in open( k_ , 'r',  encoding='latin-1' ))
+                repo_path     = repo_dict[k_] 
                 with open(k_, 'r') as file_:
                     file_content  = file_.read() 
                 file_flag     = '0'
@@ -86,7 +90,7 @@ def getFileLabels(df_param, root_path, out_file):
                     file_flag = '0'
                 else: 
                     file_flag = '1'
-                needed_file_content.append( (k_, file_content, num_lines , file_flag) )
+                needed_file_content.append( (k_, repo_path, file_content, num_lines , file_flag) ) 
         except ValueError as e_:
               print(e_) 
               print(k_)      
