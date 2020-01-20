@@ -62,9 +62,9 @@
 - Final Report: 30%
 - Code: 30% 
 - GitHub Activity-Commits, Issue discussions: 20% 
-- Elevator pitches: 20% 
+- Elevator pitches or pechakucha presentations: 20% 
 - Each project member will give updates in front of the class 
-  - Two minutes per person 
+  - 5-10 minutes per person for each group 
   - Round robin fashion 
 
 
@@ -82,6 +82,6 @@
 - If the instructor detects copy-paste in source code or exams then that will result in direct **F** for the course .  
 - Each project update will include updates so far as a Markdown file which will reside in the repo. Instructions on how to run the program in the Markdown file. The required libraries needed to run code should be written.  
 - Final project report should be spell-checked, typo-free, without passive voice. 
-- Mismatch between reported output and source code results will be inspected. The instructor will download repos, install libraries, and run the code based on the instruction provided in the mentioned Markdown file. Reported output and source code results will be checked during project update#1, project update#2, and final project submission. For reproducibility teams are allowed to use Docker containers.   
+- Mismatch between reported output and source code results will be inspected. The instructor will download repos, install libraries, and run the code based on the instruction provided in the mentioned Markdown file. For reproducibility teams are allowed to use Docker containers.   
 - Every regrade request is due within 48 hours. 
 - One project report 
