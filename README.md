@@ -26,23 +26,23 @@
 | Feb 06  | Association Rule Mining                                                                                                   |
 | Feb 11  | Sequence Mining                                                                                           |
 | Feb 13  | Sequence Mining                                                                                               |
-| Feb 18  | Elevator Pitch                         |
+| Feb 18  | Project Presentation                         |
 | Feb 20  | Exam#1       |
 | Feb 25  | Time series analysis                                                                |
 | Feb 27  | Time series analysis                                                                                        |
 | Mar 03  | Time series analysis                                                                                 |
 | Mar 05  | Clustering    |
-| Mar 10  | Elevator Pitch   |
+| Mar 10  | Project Presentation   |
 | Mar 12  | Clustering               |
 | Mar 24  | Graph Mining  |
 | Mar 26  | Graph Mining |
 | Mar 31  | Exam#2  |                                             
-| Apr 02  | Elevator Pitch |                 
+| Apr 02  | Project Presentation |                 
 | Apr 07  | Search-based algorithms  |
 | Apr 09  | TBD |
 | Nov 14  | TBD  |
 | Nov 19  | TBD   |
-| Apr 21  | Elevator Pitch  |
+| Apr 21  | Project Presentation  |
 | Apr 23  | TBD, Take home exam distributed  |
 | Apr 28  | Data Mining in Industry   |
 | Apr 30  | Data Mining in Industry  |
