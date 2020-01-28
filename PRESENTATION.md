@@ -4,6 +4,7 @@
 
 - Fork the repository 
 - Upon discussion with your peers put your name in the empty cells in the table below 
+- Create a pull request 
 - For a team of three, the student who presents for an extra day will get extra credit 
 
 
