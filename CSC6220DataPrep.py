@@ -96,6 +96,7 @@ def getFileLabels(df_param, root_path, out_file):
               print(k_)      
     print(needed_file_content[10:20])
     print(len(needed_file_content)) 
+    print('Repos:', len( np.unique( df_param['REPO'].tolist()) ) )
     with open(out_file, 'wb') as f_:
         pickle.dump(needed_file_content , f_ )
     

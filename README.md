@@ -28,12 +28,12 @@
 | Feb 13  | Sequence Mining                                                                                               |
 | Feb 18  | Project Presentation                         |
 | Feb 20  | Exam#1       |
-| Feb 25  | Time series analysis                                                                |
-| Feb 27  | Time series analysis                                                                                        |
-| Mar 03  | Time series analysis                                                                                 |
+| Feb 25  | Guest lecture                                                              |
+| Feb 27  | Time Series Analysis                                                                                   |
+| Mar 03  | Clustering                                                                           |
 | Mar 05  | Clustering    |
 | Mar 10  | Project Presentation   |
-| Mar 12  | Clustering               |
+| Mar 12  | Guest lecture               |
 | Mar 24  | Graph Mining  |
 | Mar 26  | Graph Mining |
 | Mar 31  | Exam#2  |                                             
