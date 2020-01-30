@@ -15,7 +15,7 @@
 | Dean et al.  |   |   |   |   |
 | Angeles Davila et al.  |   |   |   |   |
 | Abdelfattah et al.  |   |   |   |   |
-| Evans et al.  |   |   |   |   |
+| Evans et al.  | Dulce Kaiser | Justin Murphy | Jevin Evans | Shazibul Islam Shamim |
 | Johnson et al.  |   |   |   |   |
 | Ayub et al.  |   |   |   |   |
 | Karagoz et al.  |   |   |   |   |
