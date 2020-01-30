@@ -13,7 +13,7 @@
 |---|---|---|---|---|
 | Brackins et al.  |   |   |   |   |
 | Dean et al.  |   |   |   |   |
-| Angeles Davila et al.  |   |   |   |   |
+| Angeles Davila et al.  | Jeziorowski  |  Bare  |  McDole  |  Angeles  |
 | Abdelfattah et al.  |   |   |   |   |
 | Evans et al.  |   |   |   |   |
 | Johnson et al.  |   |   |   |   |
