@@ -225,6 +225,7 @@ def getCommitMessageCSV(type2analyze):
     all_content.append( (repo_path, hash_ , hash_message, bug_flag) ) 
   all_df_ = pd.DataFrame( all_content )
   all_df_.to_csv(type2analyze +  '_BUG_FLAG.csv', header=['REPO', 'HASH', 'MESSAGE', 'BUG_FLAG' ], index=False, encoding='utf-8')  
+  print('Unique repos:', len( np.unique(df_['REPO_PATH'].tolist() ) ) )
 
 
 
@@ -240,15 +241,16 @@ if __name__=='__main__':
     CURATED_DF   = pd.read_csv(CURATED_FILE) 
 
     # TYPE2ANALYZE = 'ComputationalBiology'
-    # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
 
     # TYPE2ANALYZE = 'Astronomy'
-    # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
 
     TYPE2ANALYZE = 'ComputationalChemistry'
-    # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
-    # getSecuFileMapping( pd.read_csv( TYPE2ANALYZE + '.csv') , TYPE2ANALYZE )
 
+    ### First we got everything related to security 
+    # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
+    ### Then we mapped security labels to files 
+    # getSecuFileMapping( pd.read_csv( TYPE2ANALYZE + '.csv') , TYPE2ANALYZE )
+    ### Then we mapped bug labels to files 
     getCommitMessageCSV(TYPE2ANALYZE) 
 
     print('*'*100 )
