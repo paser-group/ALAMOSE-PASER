@@ -174,6 +174,60 @@ def buildContent(df_, HOST_DIR, repo_type, out_dir):
     df = pd.read_csv(repo_type + '.csv') 
     getSecuFileMapping( df , repo_type )
 
+
+def filterText(msg_commit):
+    msg_commit = msg_commit.replace('\n', '')
+    msg_commit = msg_commit.replace(',',  ';')    
+    msg_commit = msg_commit.replace('\t', '')
+    msg_commit = msg_commit.replace('&',  ';')  
+    msg_commit = msg_commit.replace('#',  '')
+    msg_commit = msg_commit.replace('=',  '')      
+    msg_commit = msg_commit.replace('-',  '')  
+    msg_commit = msg_commit.replace(':',  '')
+    msg_commit = msg_commit.replace('.',  '')      
+
+    return msg_commit
+
+
+def getDiffText(repo_, hash_):   
+    cdCommand   = "cd " + repo_ + " ; "
+   
+    diffCommand = "git log --format=%B -n 1 " + hash_ 
+    command2Run = cdCommand + diffCommand
+    try:
+      diff_output = subprocess.check_output(["bash", "-c", command2Run])
+      diff_output =  diff_output.decode('latin-1') ### exception for utf-8 
+    except subprocess.CalledProcessError as e_:
+      diff_output = "NOT_FOUND" 
+    diff_output = filterText(diff_output) 
+
+    # print(diff_output)
+    return diff_output
+
+
+def detectBuggyCommit(msg_):
+    prem_bug_kw_list      = ['error', 'bug', 'fix', 'issue', 'mistake', 'incorrect', 'fault', 'defect', 'flaw', 'solve' ]
+    flag2ret  = 0 
+    msg_ = msg_.lower()
+    if(any(x_ in msg_ for x_ in prem_bug_kw_list)) and ( 'default' not in msg_) and ('merge' not in msg_) :    
+        flag2ret = 1 
+    return flag2ret
+
+def getCommitMessageCSV(type2analyze): 
+  all_content = []
+  df_    = pd.read_csv( TYPE2ANALYZE + '.csv') 
+  hashes = np.unique(  df_['HASH'].tolist() ) 
+  for hash_ in hashes:
+    hash_df      = df_[df_['HASH']==hash_]
+    repo_path    = hash_df['REPO_PATH'].tolist()[0]  
+    hash_message = getDiffText(repo_path, hash_) 
+    bug_flag     = detectBuggyCommit(hash_message) 
+    all_content.append( (repo_path, hash_ , hash_message, bug_flag) ) 
+  all_df_ = pd.DataFrame( all_content )
+  all_df_.to_csv(type2analyze +  '_BUG_FLAG.csv', header=['REPO', 'HASH', 'MESSAGE', 'BUG_FLAG' ], index=False, encoding='utf-8')  
+
+
+
 if __name__=='__main__': 
 
     t1 = time.time()
@@ -185,15 +239,17 @@ if __name__=='__main__':
     OUTPUT_DIR = '/Users/arahman/Documents/OneDriveWingUp/OneDrive-TennesseeTechUniversity/Teaching/Spring2020/CSC6220_DATASET/'
     CURATED_DF   = pd.read_csv(CURATED_FILE) 
 
-    TYPE2ANALYZE = 'ComputationalBiology'
+    # TYPE2ANALYZE = 'ComputationalBiology'
     # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
 
     # TYPE2ANALYZE = 'Astronomy'
     # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
 
-    # TYPE2ANALYZE = 'ComputationalChemistry'
+    TYPE2ANALYZE = 'ComputationalChemistry'
     # buildContent(CURATED_DF, HOST_DIR, TYPE2ANALYZE, OUTPUT_DIR)  
-    getSecuFileMapping( pd.read_csv( TYPE2ANALYZE + '.csv') , TYPE2ANALYZE )
+    # getSecuFileMapping( pd.read_csv( TYPE2ANALYZE + '.csv') , TYPE2ANALYZE )
+
+    getCommitMessageCSV(TYPE2ANALYZE) 
 
     print('*'*100 )
     print('Ended at:', giveTimeStamp() )
