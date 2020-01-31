@@ -176,15 +176,16 @@ def buildContent(df_, HOST_DIR, repo_type, out_dir):
 
 
 def filterText(msg_commit):
-    msg_commit = msg_commit.replace('\n', '')
+    msg_commit = msg_commit.replace('\n', ' ')
     msg_commit = msg_commit.replace(',',  ';')    
-    msg_commit = msg_commit.replace('\t', '')
+    msg_commit = msg_commit.replace('\t', ' ')
     msg_commit = msg_commit.replace('&',  ';')  
     msg_commit = msg_commit.replace('#',  '')
     msg_commit = msg_commit.replace('=',  '')      
     msg_commit = msg_commit.replace('-',  '')  
     msg_commit = msg_commit.replace(':',  '')
     msg_commit = msg_commit.replace('.',  '')      
+    msg_commit = msg_commit.replace('\r',  '')      
 
     return msg_commit
 
@@ -221,6 +222,7 @@ def getCommitMessageCSV(type2analyze):
     hash_df      = df_[df_['HASH']==hash_]
     repo_path    = hash_df['REPO_PATH'].tolist()[0]  
     hash_message = getDiffText(repo_path, hash_) 
+    hash_message = filterText(hash_message) 
     bug_flag     = detectBuggyCommit(hash_message) 
     all_content.append( (repo_path, hash_ , hash_message, bug_flag) ) 
   all_df_ = pd.DataFrame( all_content )
