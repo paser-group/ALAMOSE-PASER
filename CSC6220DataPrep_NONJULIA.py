@@ -104,18 +104,14 @@ def getSecuFileMapping(full_df, repo_type):
     file_df = full_df[full_df['FILE_MAP']==file_] 
     file_flags = file_df['SECU_FLAG'].tolist() 
     file_size  = file_df['FILE_SIZE'].tolist()[0]
-    # print(file_flags) 
-    # print('='*25)
     file_ext   = file_.split('.')[-1].upper() 
     unique_flags = np.unique(file_flags)
     if (len(unique_flags) ==1 ) and (unique_flags[0]=='NEUTRAL'):
       file_secu = 'NEUTRAL'     
     else:
       file_secu = 'INSECURE' 
-    # if ((file_ext=='C') or (file_ext=='CC') or (file_ext=='CPP') or (file_ext=='GLSL') or (file_ext=='GO') or (file_ext=='H') or (file_ext=='HH') or (file_ext=='HPP') or (file_ext=='JAVA') or (file_ext=='JL') or (file_ext=='JS') or (file_ext=='LUA') or (file_ext=='PL') or (file_ext=='PM') or (file_ext=='PY') or (file_ext=='R') or (file_ext=='RB') or (file_ext=='SH') ):
     if ((file_ext=='C') or (file_ext=='CC') or (file_ext=='CPP')  or (file_ext=='GO') or (file_ext=='H') or (file_ext=='HH') or (file_ext=='HPP') or (file_ext=='JAVA') or (file_ext=='JL') or (file_ext=='JS') or (file_ext=='LUA') or (file_ext=='PL')  or (file_ext=='PY') or (file_ext=='R') or (file_ext=='RB')  ):    
       tu = (file_ , file_size , file_ext, file_secu) 
-      # print(tu)
       secu_file.append( tu )
   secu_df = pd.DataFrame(secu_file)
   secu_df.to_csv(repo_type + '_SECU_FILE_MAP.csv', header=[ 'FILE_MAP', 'FILE_SIZE' , 'FILE_EXT', 'SECU_FLAG' ], index=False, encoding='utf-8')   
@@ -216,7 +212,7 @@ def detectBuggyCommit(msg_):
 
 def getCommitMessageCSV(type2analyze): 
   all_content = []
-  df_    = pd.read_csv( TYPE2ANALYZE + '.csv') 
+  df_    = pd.read_csv( type2analyze + '.csv') 
   hashes = np.unique(  df_['HASH'].tolist() ) 
   for hash_ in hashes:
     hash_df      = df_[df_['HASH']==hash_]
@@ -229,6 +225,31 @@ def getCommitMessageCSV(type2analyze):
   all_df_.to_csv(type2analyze +  '_BUG_FLAG.csv', header=['REPO', 'HASH', 'MESSAGE', 'BUG_FLAG' ], index=False, encoding='utf-8')  
   print('Unique repos:', len( np.unique(df_['REPO_PATH'].tolist() ) ) )
 
+def getBugFileMapping(filtered_file, full_file, repo_type): 
+  buggy_file = []
+  full_df   = pd.read_csv(full_file) 
+  all_files = np.unique(full_df['FILE_MAP'].tolist()) 
+  filtered_df = pd.read_csv(filtered_file) 
+  file_label  = 'NEUTRAL'
+  for file_ in all_files: 
+    file_df = full_df[full_df['FILE_MAP']==file_] 
+    file_size  = file_df['FILE_SIZE'].tolist()[0]
+    file_ext   = file_.split('.')[-1].upper() 
+    file_hash  = file_df['HASH'].tolist() 
+
+    filtered_file_df = filtered_df[filtered_df['HASH'].isin(file_hash)] 
+    # print(filtered_file_df) 
+    unique_flags     = np.unique( filtered_file_df['BUG_FLAG'].tolist() )
+
+    if (len(unique_flags) ==1 ) and (unique_flags[0]==0):
+      file_label = 'NEUTRAL'     
+    else:
+      file_label = 'BUGGY' 
+    if ((file_ext=='C') or (file_ext=='CC') or (file_ext=='CPP')  or (file_ext=='GO') or (file_ext=='H') or (file_ext=='HH') or (file_ext=='HPP') or (file_ext=='JAVA') or (file_ext=='JL') or (file_ext=='JS') or (file_ext=='LUA') or (file_ext=='PL')  or (file_ext=='PY') or (file_ext=='R') or (file_ext=='RB')  ):    
+      tu = (file_ , file_size , file_ext, file_label) 
+      buggy_file.append( tu )
+  buggy_df = pd.DataFrame(buggy_file)
+  buggy_df.to_csv(repo_type + '_BUGGY_FILE_MAP.csv', header=[ 'FILE_MAP', 'FILE_SIZE' , 'FILE_EXT', 'BUG_FLAG' ], index=False, encoding='utf-8')   
 
 
 if __name__=='__main__': 
@@ -253,7 +274,11 @@ if __name__=='__main__':
     ### Then we mapped security labels to files 
     # getSecuFileMapping( pd.read_csv( TYPE2ANALYZE + '.csv') , TYPE2ANALYZE )
     ### Then we mapped bug labels to files 
-    getCommitMessageCSV(TYPE2ANALYZE) 
+    # getCommitMessageCSV(TYPE2ANALYZE) 
+
+    ### Then we mapped bug labels to files 
+    getBugFileMapping('Filtered_' + TYPE2ANALYZE + '_BUG_FLAG.csv' , TYPE2ANALYZE + '.csv', TYPE2ANALYZE )
+
 
     print('*'*100 )
     print('Ended at:', giveTimeStamp() )
