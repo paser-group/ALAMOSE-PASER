@@ -14,7 +14,7 @@
 | Brackins et al.  |   |   |   |   |
 | Dean et al.  |   |   |   |   |
 | Angeles Davila et al.  |   |   |   |   |
-| Abdelfattah et al.  |   |   |   |   |
+| Abdelfattah et al.  | Mohamed Ibrahem  | Ahmed Shafee | Mahmoud Badr  | Sherif Abdelfattah  |
 | Evans et al.  |   |   |   |   |
 | Johnson et al.  |   |   |   |   |
 | Ayub et al.  |   |   |   |   |
