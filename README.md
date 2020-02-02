@@ -39,9 +39,9 @@
 | Mar 31  | Exam#2  |                                             
 | Apr 02  | Project Presentation |                 
 | Apr 07  | Search-based algorithms  |
-| Apr 09  | TBD |
-| Nov 14  | TBD  |
-| Nov 19  | TBD   |
+| Apr 09  | Machine Learning  |
+| Apr 14  | Machine Learning   |
+| Apr 16  | Machine Learning    |
 | Apr 21  | Project Presentation  |
 | Apr 23  | TBD, Take home exam distributed  |
 | Apr 28  | Data Mining in Industry   |
