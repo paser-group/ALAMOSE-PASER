@@ -11,7 +11,7 @@
 
 | Team  | Feb18  |  Mar10 |  Apr02 |  Apr21 |
 |---|---|---|---|---|
-| Brackins et al.  | rshakya  | jagibson44  | jtbrakins42  | TBA  |
+| Brackins et al.  | Raunak Shakya  | Jonathan A. Gibson  | John Brackins  | TBA  |
 | Dean et al.  |   |   |   |   |
 | Angeles Davila et al.  |   |   |   |   |
 | Abdelfattah et al.  |   |   |   |   |
