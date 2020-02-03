@@ -19,7 +19,7 @@
 | Johnson et al.  |   |   |   |   |
 | Ayub et al.  |   |   |   |   |
 | Karagoz et al.  |   |   |   |   |
-| Mithu et al.  |   |   |   |   |
+| Mithu et al.  | Mithu  |   |   |   |
 
 
 ## Instructions for Presenting 
