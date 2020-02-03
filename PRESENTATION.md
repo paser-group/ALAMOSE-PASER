@@ -14,7 +14,7 @@
 | Brackins et al.  | Raunak Shakya  | Jonathan A. Gibson  | John Brackins  | TBA  |
 | Dean et al.  |   |   |   |   |
 | Angeles Davila et al.  | Jeziorowski  |  Bare  |  McDole  |  Angeles  |
-| Abdelfattah et al.  |   |   |   |   |
+| Abdelfattah et al.  | Mohamed Ibrahem    |  Ahmed Shafee   | Mahmoud Badr    | Sherif Abdelfattah   |
 | Evans et al.  | Dulce Kaiser | Justin Murphy | Jevin Evans | Shazibul Islam Shamim |
 | Johnson et al.  |   |   |   |   |
 | Ayub et al.  | Ahsan  | Nathan  | Steve  | All/group presentation?  |
