@@ -19,7 +19,7 @@
 | Johnson et al.  |   |   |   |   |
 | Ayub et al.  | Ahsan  | Nathan  | Steve  | All/group presentation?  |
 | Karagoz et al.  |   |   |   |   |
-| Mithu et al.  |   |   |   |   |
+| Mithu et al.  | Mithu  |   |   |   |
 
 
 ## Instructions for Presenting 
