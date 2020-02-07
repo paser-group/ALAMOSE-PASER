@@ -16,7 +16,7 @@
 | Angeles Davila et al.  | Jeziorowski  |  Bare  |  McDole  |  Angeles  |
 | Abdelfattah et al.  | Mohamed Ibrahem    |  Ahmed Shafee   | Mahmoud Badr    | Sherif Abdelfattah   |
 | Evans et al.  | Dulce Kaiser | Justin Murphy | Jevin Evans | Shazibul Islam Shamim |
-| Johnson et al.  |   |   |   |   |
+| Johnson et al.  | Marti  | Johnson  | Lee  | Thompson  |
 | Ayub et al.  | Ahsan  | Nathan  | Steve  | All/group presentation?  |
 | Karagoz et al.  |   |   |   |   |
 | Mithu et al.  | Mithu  |   |   |   |
