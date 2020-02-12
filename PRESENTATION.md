@@ -12,7 +12,7 @@
 | Team  | Feb18  |  Mar10 |  Apr02 |  Apr21 |
 |---|---|---|---|---|
 | Brackins et al.  | Raunak Shakya  | Jonathan A. Gibson  | John Brackins  | TBA  |
-| Dean et al.  |   |   |   |   |
+| Dean et al.  | Jonathan  | Tola  | Sushil  | TBA  |
 | Angeles Davila et al.  | Jeziorowski  |  Bare  |  McDole  |  Angeles  |
 | Abdelfattah et al.  | Mohamed Ibrahem    |  Ahmed Shafee   | Mahmoud Badr    | Sherif Abdelfattah   |
 | Evans et al.  | Dulce Kaiser | Justin Murphy | Jevin Evans | Shazibul Islam Shamim |
