@@ -25,11 +25,11 @@
 | Feb 04  | Association Rule Mining                                                                                                   |
 | Feb 06  | Association Rule Mining                                                                                                   |
 | Feb 11  | Sequence Mining                                                                                           |
-| Feb 13  | Sequence Mining                                                                                               |
+| Feb 13  | Sequence Mining, Time Series Analysis                                                                         |
 | Feb 18  | Project Presentation                         |
 | Feb 20  | Exam#1       |
 | Feb 25  | Guest lecture                                                              |
-| Feb 27  | Time Series Analysis                                                                                   |
+| Feb 27  | Clustering                                                                                   |
 | Mar 03  | Clustering                                                                           |
 | Mar 05  | Clustering    |
 | Mar 10  | Project Presentation   |
@@ -38,7 +38,7 @@
 | Mar 26  | Graph Mining |
 | Mar 31  | Exam#2  |                                             
 | Apr 02  | Project Presentation |                 
-| Apr 07  | Search-based algorithms  |
+| Apr 07  | Instructor on Travel  |
 | Apr 09  | Machine Learning  |
 | Apr 14  | Machine Learning   |
 | Apr 16  | Machine Learning    |
