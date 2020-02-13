@@ -28,17 +28,17 @@
 | Feb 13  | Sequence Mining, Time Series Analysis                                                                         |
 | Feb 18  | Project Presentation                         |
 | Feb 20  | Exam#1       |
-| Feb 25  | Guest lecture                                                              |
+| Feb 25  | Guest lecture - Dr. Chudamanai (Hypothesis Testing)                                          |
 | Feb 27  | Clustering                                                                                   |
 | Mar 03  | Clustering                                                                           |
 | Mar 05  | Clustering    |
 | Mar 10  | Project Presentation   |
-| Mar 12  | Guest lecture               |
+| Mar 12  | Guest lecture - Dr. Chudamani (Markov Chains)               |
 | Mar 24  | Graph Mining  |
 | Mar 26  | Graph Mining |
 | Mar 31  | Exam#2  |                                             
 | Apr 02  | Project Presentation |                 
-| Apr 07  | Instructor on Travel  |
+| Apr 07  | Instructor on Travel - Use time for project  |
 | Apr 09  | Machine Learning  |
 | Apr 14  | Machine Learning   |
 | Apr 16  | Machine Learning    |
