@@ -8,20 +8,6 @@
 - For a team of three, the student who presents for an extra day will get extra credit 
 
 
-
-| Team  | Feb18  |  Mar10 |  Apr02 |  Apr21 |
-|---|---|---|---|---|
-| Brackins et al.  | Raunak Shakya  | Jonathan A. Gibson  | John Brackins  | TBA  |
-| Dean et al.  | Jonathan  | Tola  | Sushil  | TBA  |
-| Angeles Davila et al.  | Jeziorowski  |  Bare  |  McDole  |  Angeles  |
-| Abdelfattah et al.  | Mohamed Ibrahem    |  Ahmed Shafee   | Mahmoud Badr    | Sherif Abdelfattah   |
-| Evans et al.  | Dulce Kaiser | Justin Murphy | Jevin Evans | Shazibul Islam Shamim |
-| Johnson et al.  | Marti  | Johnson  | Lee  | Thompson  |
-| Ayub et al.  | Ahsan  | Nathan  | Steve  | All/group presentation?  |
-| Karagoz et al.  |   |   |   |   |
-| Mithu et al.  | Mithu  |   |   |   |
-
-
 ## Instructions for Presenting 
 
 - Presentations will be in pachakucha format
