@@ -29,13 +29,13 @@
 | Feb 18  | Project Presentation                         |
 | Feb 20  | Exam#1       |
 | Feb 25  | Guest lecture - Dr. Chudamanai (Hypothesis Testing)                                          |
-| Feb 27  | Clustering                                                                                   |
-| Mar 03  | Clustering                                                                           |
+| Feb 27  | Graph Mining                                                                                   |
+| Mar 03  | Graph Mining                                                                           |
 | Mar 05  | Clustering    |
 | Mar 10  | Project Presentation   |
 | Mar 12  | Guest lecture - Dr. Chudamani (Markov Chains)               |
-| Mar 24  | Graph Mining  |
-| Mar 26  | Graph Mining |
+| Mar 24  | Clustering  |
+| Mar 26  | Clustering  | 
 | Mar 31  | Exam#2  |                                             
 | Apr 02  | Project Presentation |                 
 | Apr 07  | Instructor on Travel - Use time for project  |
