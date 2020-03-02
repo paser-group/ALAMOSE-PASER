@@ -31,7 +31,7 @@
 | Feb 25  | Guest lecture - Dr. Chudamanai (Hypothesis Testing)                                          |
 | Feb 27  | Graph Mining                                                                                   |
 | Mar 03  | Graph Mining                                                                           |
-| Mar 05  | Clustering    |
+| Mar 05  | Graph Mining    |
 | Mar 10  | Project Presentation   |
 | Mar 12  | Guest lecture - Dr. Chudamani (Markov Chains)               |
 | Mar 24  | Clustering  |
@@ -43,7 +43,7 @@
 | Apr 14  | Machine Learning   |
 | Apr 16  | Machine Learning    |
 | Apr 21  | Project Presentation  |
-| Apr 23  | TBD, Take home exam distributed  |
+| Apr 23  | Qualitative Data Analysis, Take home exam distributed  |
 | Apr 28  | Data Mining in Industry   |
 | Apr 30  | Data Mining in Industry  |
 | May 05  | Take home exam due  |
