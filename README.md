@@ -60,6 +60,10 @@
 
 ## Project Grade Distribution 
 - Final Report: 30%
+  - Mandatory sections: Introduction, Research Questions, Methodology, Findings, References => 25% 
+  - Report must be in Latex => 25% 
+  - Report must be free of typos, grammaticall errors, and passive voices => 25% 
+  - Report must discuss who did what part of the project => 25% 
 - Code: 30% 
 - GitHub Activity-Commits, Issue discussions: 20% 
 - Elevator pitches or pechakucha presentations: 20% 
