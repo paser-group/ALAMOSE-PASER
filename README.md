@@ -34,16 +34,16 @@
 | Mar 05  | Graph Mining    |
 | Mar 10  | Project Presentation   |
 | Mar 12  | Guest lecture - Dr. Chudamani (Markov Chains)               |
-| Mar 24  | Clustering  |
-| Mar 26  | Clustering  | 
+| Mar 24  | Graph Mining  |
+| Mar 26  | Qualitative Data Analysis  | 
 | Mar 31  | Exam#2  |                                             
 | Apr 02  | Project Presentation |                 
 | Apr 07  | Instructor on Travel - Use time for project  |
-| Apr 09  | Machine Learning  |
+| Apr 09  | Clustering  |
 | Apr 14  | Machine Learning   |
 | Apr 16  | Machine Learning    |
 | Apr 21  | Project Presentation  |
-| Apr 23  | Qualitative Data Analysis, Take home exam distributed  |
+| Apr 23  | Machine Learning, Take home exam distributed  |
 | Apr 28  | Data Mining in Industry   |
 | Apr 30  | Data Mining in Industry  |
 | May 05  | Take home exam due  |
