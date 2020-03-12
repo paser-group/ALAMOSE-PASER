@@ -38,7 +38,7 @@
 | Mar 26  | Qualitative Data Analysis  | 
 | Mar 31  | Exam#2  |                                             
 | Apr 02  | Project Presentation |                 
-| Apr 07  | Instructor on Travel - Use time for project  |
+| Apr 07  | Clustering  |
 | Apr 09  | Clustering  |
 | Apr 14  | Machine Learning   |
 | Apr 16  | Machine Learning    |
