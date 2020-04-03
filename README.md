@@ -42,7 +42,7 @@
 | Apr 09  | Exam#2  (Take Home) |
 | Apr 14  | Supervised Learning   |
 | Apr 16  | Supervised Learning    |
-| Apr 21  | Project Presentation  |
+| Apr 21  | Project Presentation,  Extra credit distributed |
 | Apr 23  | Machine Learning, Take home exam distributed  |
 | Apr 28  | Clustering   |
 | Apr 30  | Clustering , Take home exam due |
