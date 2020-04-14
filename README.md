@@ -46,7 +46,7 @@
 | Apr 23  | Machine Learning, Take home exam distributed  |
 | Apr 28  | Clustering   |
 | Apr 30  | Clustering , Take home exam due |
-| May 05  | Extra credit due  |
+| May 05  | Extra credit due , Project Report Due |
 | May 06  | Tentative grades distributed  |
 
  
